@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -65,5 +66,20 @@ Route::group(['prefix'=>'admin'], function(){
         'store' => 'admin.users.store',
         'update' => 'admin.users.update',
         'destroy' => 'admin.users.delete'
+    ]);
+});
+
+Route::group(['prefix'=>'admin'], function(){
+
+    Route::resource("posts", PostController::class)->parameters([
+        'posts' => 'post'
+    ])->names([
+        'edit' => 'admin.posts.edit',
+        'create' => 'admin.posts.create',
+        'show' => 'admin.posts.show',
+        'index' => 'admin.posts.index',
+        'store' => 'admin.posts.store',
+        'update' => 'admin.posts.update',
+        'destroy' => 'admin.posts.delete'
     ]);
 });

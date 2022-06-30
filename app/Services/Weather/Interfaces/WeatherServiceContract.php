@@ -2,8 +2,6 @@
 
 namespace App\Services\Weather\Interfaces;
 
-
-use App\Services\Weather\Interfaces\Models\CloudinessModelContract;
 use App\Services\Weather\Interfaces\Models\CoordinateModelContract;
 use App\Services\Weather\Interfaces\Models\TemperatureModelContract;
 

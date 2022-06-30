@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\UploadedFile;
@@ -100,4 +101,19 @@ class Post extends Model
     {
         return $value ?? self::NO_IMAGE;
     }
+
+    public function getCategoryTitle()
+    {
+        return ($this->category != null)
+            ? $this->category->title
+            : "There are no categories yet";
+    }
+
+    public function getTagsTitle()
+    {
+        return (!$this->tags->isEmpty())
+            ? implode(', ', $this->tags->pluck('title')->all())
+            : "There are no tags yet";
+    }
+
 }
